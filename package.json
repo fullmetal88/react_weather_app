@@ -2,6 +2,9 @@
   "name": "react_udemy",
   "version": "1.0.0",
   "main": "index.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "license": "MIT",
   "dependencies": {
     "axios": "^0.16.2",
