@@ -11,6 +11,7 @@ export default React.createClass({
   },
   handleSearch: function (city) {
     var that = this;
+    
     handleSearchFetch(city)
       .then(function (response) {
         that.setState({
@@ -27,6 +28,7 @@ export default React.createClass({
     });
     // debugger;
     var that = this;
+    // $('h1').css("color","red");
     setTimeout(function () {
       handleSearchAxios(city)
         .then(function (response) {

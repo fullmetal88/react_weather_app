@@ -1,10 +1,24 @@
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   context: path.resolve('./src'),
   entry: {
-    app: './app.js',
+    app: [
+      'script-loader!jquery/dist/jquery.min.js',
+      'script-loader!foundation-sites/dist/js/foundation.min.js',
+      './app.js',
+    ],
   },
+  externals: {
+    jquery: 'jQuery',
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+    }),
+  ],
   output: {
     path: path.resolve('./dist'),
     filename: 'bundle.js',
@@ -36,8 +50,13 @@ module.exports = {
           options: { presets: ['es2015', 'react'] },
         }],
       },
+      {
+        test: /\.css/,
+        use: ['style-loader', 'css-loader'],
+      },
     ],
   },
+
   devServer: {
     contentBase: path.resolve('./dist'),
   },

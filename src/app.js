@@ -4,6 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 import Main from 'main';
 import Navigation from 'navigation';
 
+import styles from 'foundation-sites/dist/css/foundation.min.css';
+$(document).foundation();
+// import stylesNative from '../dist/style.css';
+
 var App = React.createClass({
   render: function () {
     return (
@@ -20,5 +24,3 @@ ReactDOM.render(
     <App />
   </BrowserRouter>, document.querySelector('#app')
 );
-
-
