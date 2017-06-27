@@ -1,17 +1,20 @@
 import React from 'react';
 import WeatherForm from 'weatherform';
 import WeatherResult from 'weatherresult';
+import Modal from 'modal';
 import { handleSearchFetch, handleSearchAxios } from 'weatherapi';
 
 export default React.createClass({
   getInitialState: function () {
     return {
       isLoading: false,
+      error: false,
+      errorMessage: null,
     }
   },
   handleSearch: function (city) {
     var that = this;
-    
+
     handleSearchFetch(city)
       .then(function (response) {
         that.setState({
@@ -25,10 +28,10 @@ export default React.createClass({
   handleSearchAlt: function (city) {
     this.setState({
       isLoading: true,
+      error: false,
+      errorMessage: null,
     });
-    // debugger;
     var that = this;
-    // $('h1').css("color","red");
     setTimeout(function () {
       handleSearchAxios(city)
         .then(function (response) {
@@ -38,17 +41,28 @@ export default React.createClass({
             isLoading: false,
           });
         }).catch(function (err) {
-          console.log(err);
+          that.setState({
+            isLoading: false,
+            error: true,
+            errorMessage: err.message,
+          });
         });
     }, 1000);
-
+  },
+  handleError: function (message) {
+    this.setState({
+      error: true,
+      errorMessage: message,
+    });
   },
   render: function () {
-    let { city, temp, isLoading } = this.state
+    const { city, temp, isLoading, errorMessage } = this.state;
+    const modal = this.state.error ? <Modal message={errorMessage} /> : '';
     return (
       <div>
+        {modal}
         <h1 className="text-center">Get Weather</h1>
-        <WeatherForm handleSearch={this.handleSearchAlt} />
+        <WeatherForm handleSearch={this.handleSearchAlt} handleError={this.handleError} />
         <WeatherResult city={city} temp={temp} isLoading={isLoading} />
       </div>
     );

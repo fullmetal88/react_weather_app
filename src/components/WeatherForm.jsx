@@ -7,6 +7,9 @@ export default React.createClass({
     if (city.length > 0) {
       this.props.handleSearch(city);
       this.city.value = '';
+    } else {
+      const message = "please type in city";
+      this.props.handleError(message);
     }
   },
   render: function () {
