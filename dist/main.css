@@ -1,0 +1,32 @@
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.top-bar{
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+svg{
+  width: 2rem;
+  height: 2rem;
+  animation-name: spinner-rotate;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out; 
+}
+
+@keyframes spinner-rotate{
+    0%{transform: rotate(0deg);}
+    100%{transform: rotate(360deg);}
+}
+
+.weather-result{
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+}

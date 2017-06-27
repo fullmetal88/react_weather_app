@@ -13,7 +13,7 @@ export default React.createClass({
     return (
       <form className="weather-query" onSubmit={this.handleSubmit}>
         <input type="text" ref={(city) => this.city = city} placeholder="Enter city name" />
-        <button>Get weather</button>
+        <button className="button hollow expanded">Get weather</button>
       </form>
     );
   },

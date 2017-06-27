@@ -47,7 +47,7 @@ export default React.createClass({
     let { city, temp, isLoading } = this.state
     return (
       <div>
-        <h1>Get Weather</h1>
+        <h1 className="text-center">Get Weather</h1>
         <WeatherForm handleSearch={this.handleSearchAlt} />
         <WeatherResult city={city} temp={temp} isLoading={isLoading} />
       </div>
