@@ -1,3 +1,5 @@
+$svg-dimension: 2rem;
+
 body{
   height: 100vh;
   display: flex;
@@ -12,8 +14,8 @@ body{
 }
 
 svg{
-  width: 2rem;
-  height: 2rem;
+  width: $svg-dimension;
+  height: $svg-dimension;
   animation-name: spinner-rotate;
   animation-duration: 1s;
   animation-iteration-count: infinite;
@@ -29,4 +31,8 @@ svg{
   height: 3rem;
   display: flex;
   justify-content: center;
+}
+
+input[type=text]{
+  box-shadow: 0 0 0;
 }

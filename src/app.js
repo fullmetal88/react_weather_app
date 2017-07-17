@@ -4,8 +4,8 @@ import { BrowserRouter, HashRouter } from 'react-router-dom';
 import Main from 'main';
 import Navigation from 'navigation';
 
-import styles from 'foundation-sites/dist/css/foundation.min.css';
-import main from '../dist/main.css';
+import styles from 'foundationStyles';
+import main from 'customStyles';
 $(document).foundation();
 // import stylesNative from '../dist/style.css';
 

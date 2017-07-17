@@ -38,6 +38,8 @@ module.exports = {
       weatherresult: 'components/WeatherResult.jsx',
       weatherapi: 'api/WeatherApi',
       modal: 'components/Modal.jsx',
+      foundationStyles: '../node_modules/foundation-sites/dist/css/foundation.min.css',
+      customStyles: '../dist/main.scss',
     },
     extensions: ['.js', '.jsx'],
   },
@@ -53,7 +55,18 @@ module.exports = {
       },
       {
         test: /\.css/,
-        use: ['style-loader', 'css-loader'],
+        use: [
+          'style-loader',
+          'css-loader',
+        ],
+      },
+      {
+        test: /\.(sass|scss)$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ],
       },
     ],
   },
