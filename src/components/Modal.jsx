@@ -1,6 +1,9 @@
 import React from 'react';
 
 export default React.createClass({
+  propTypes: {
+    message: React.PropTypes.string.isRequired,
+  },
   componentDidMount: function () {
     const modal = new Foundation.Reveal($('#error-modal'));
     modal.open();
