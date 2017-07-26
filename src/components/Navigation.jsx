@@ -4,6 +4,11 @@ import { NavLink, IndexLink } from 'react-router-dom';
 export default React.createClass({
   handleSubmit: function (e) {
     e.preventDefault();
+    const encodedCity = encodeURIComponent(this.city.value);
+    if(encodedCity.length > 0){
+      this.city.value = '';
+      window.location.hash = `#/?city=${encodedCity}`;
+    }
   },
   render: function () {
     return (
@@ -19,7 +24,7 @@ export default React.createClass({
         <div className="top-bar-right">
           <form onSubmit={this.handleSubmit}>
             <ul className="menu">
-              <li><input type="text" placeholder="City" /></li>
+              <li><input type="text" ref={(city) => this.city = city} placeholder="City" /></li>
               <li><button type="submit" className="button">Get weather</button></li>
             </ul>
           </form>

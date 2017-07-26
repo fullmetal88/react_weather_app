@@ -4,6 +4,7 @@ import WeatherForm from 'weatherform';
 import WeatherResult from 'weatherresult';
 import Modal from 'modal';
 import { handleSearchFetch, handleSearchAxios } from 'weatherapi';
+import queryString from 'query-string';
 
 export default React.createClass({
   getInitialState: function () {
@@ -11,6 +12,20 @@ export default React.createClass({
       isLoading: false,
       error: false,
       errorMessage: null,
+    }
+  },
+  componentDidMount: function () {
+    const city = queryString.parse(this.props.location.search).city;
+    if (city) {
+      this.handleSearchAlt(city);
+      window.location.hash = '#/';
+    }
+  },
+  componentWillReceiveProps: function (props) {
+    const city = queryString.parse(props.location.search).city;
+    if (city) {
+      this.handleSearchAlt(city);
+      window.location.hash = '#/';
     }
   },
   handleSearch: function (city) {
@@ -63,7 +78,7 @@ export default React.createClass({
       <div>
         {modal}
         <h1 className="text-center">Get Weather</h1>
-        <WeatherForm handleSearch={this.handleSearchAlt} handleError={this.handleError} />
+        <WeatherForm city={city} handleSearch={this.handleSearchAlt} handleError={this.handleError} />
         <WeatherResult city={city} temp={temp} isLoading={isLoading} />
       </div>
     );
