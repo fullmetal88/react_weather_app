@@ -60,7 +60,7 @@ export default React.createClass({
           that.setState({
             isLoading: false,
             error: true,
-            errorMessage: err.message,
+            errorMessage: 'City not found',
           });
         });
     }, 1000);
